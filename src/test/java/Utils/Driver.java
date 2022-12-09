@@ -23,6 +23,33 @@ public class Driver {
 
         if(driver==null){
             switch (driverName){
+                case "firefoxOnGrid":
+                    String urlFireFox = "http://18.222.145.71:4444";
+                    File ffFile = new File("C:\\Users\\Administrator\\Downloads\\geckodriver.exe");
+                    System.setProperty("webdriver.geckodriver.driver", ffFile.getAbsolutePath());
+                    DesiredCapabilities caps = DesiredCapabilities.firefox();
+                    caps.setBrowserName("firefox");
+                    caps.setPlatform(Platform.ANY);
+                    try {
+                        driver = new RemoteWebDriver(new URL(urlFireFox), caps);
+                    }catch (MalformedURLException e){
+                        throw new RuntimeException(e);
+                    }
+                    break;
+
+                case "chromeOnGrid":
+                    String url = "http://18.222.145.71:4444";
+                    File file = new File("C:\\Users\\Administrator\\Downloads\\chromedriver.exe");
+                    System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
+                    DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
+                    desiredCapabilities.setBrowserName("chrome");
+                    desiredCapabilities.setPlatform(Platform.ANY);
+                    try {
+                        driver = new RemoteWebDriver(new URL(url), desiredCapabilities);
+                    }catch (MalformedURLException ex){
+                        throw new RuntimeException(ex);
+                    }
+                    break;
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
                     driver=new FirefoxDriver();

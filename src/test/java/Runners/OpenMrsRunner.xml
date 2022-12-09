@@ -3,7 +3,18 @@
 <suite name="OpenMRS Runner Class" parallel="tests" thread-count="3">
 
     <test name="Test Runner1">
-        <parameter name="driverName" value="chrome1"> </parameter>
+        <parameter name="driverName" value="firefoxOnGrid"> </parameter>
+        <parameter name="username" value="admin"></parameter>
+        <parameter name="password" value="Admin123"></parameter>
+        <parameter name="locationName" value="Pharmacy"></parameter>
+        <parameter name="appName" value="Register a patient"></parameter>
+        <classes>
+            <class name="Tests.com.OpenMRS.LoginTest.AdminLoginTest"></class>
+        </classes>
+    </test>
+
+    <test name="Test Runner2">
+        <parameter name="driverName" value="chromeOnGrid"> </parameter>
         <parameter name="username" value="admin"></parameter>
         <parameter name="password" value="Admin123"></parameter>
         <parameter name="locationName" value="Pharmacy"></parameter>
